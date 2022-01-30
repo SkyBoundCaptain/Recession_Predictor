@@ -1,0 +1,331 @@
+jQuery.fn.extend({
+    showOecdPopup: function(options, clickHappened) {
+        var plugin = this;
+
+        // Establish our default settings
+        var defaults = {
+            "container": plugin, //container for adding popup
+            "popupID": "popup-" + Math.floor(Math.random() * 89999 + 10000), //id for popup
+            "cookie": "OecdSurvey", //cookie name
+            "testUrl": "/terminalfour/SiteManager", //root of we site
+            "liveMode": "Yes", //If yes show on Prod
+            "allPages": "Yes", //If yes all pages
+            "pagesList": "", //list of page that popup will be shown
+            "includeLatestDocuments": "Yes",
+            "includeByDate": "Yes",
+            "includeByCountry": "Yes",
+            "includePublicationsDocuments": "Yes",
+            "title": "title",
+            "text": "text",
+            "button": "button",
+            "logo": "",
+            "surveyUrl": "",
+            "hideInternal": "No",
+            "internalExternalImg": "http://t4-site-mgr.oecd.org/internalExternal.gif",
+            "hideFooter": "No",
+            "primarybgcolor": "#11629a",
+            "secondrybgcolor": "#ffffff",
+            "primarytextcolor": "#ffffff",
+            "secondrytextcolor": "#333333"
+        };
+
+        plugin.settings = $.extend({}, defaults, options);
+        
+        //init
+        plugin.init = function() {
+
+            //split page list
+            plugin.settings.pagesList = plugin.settings.pagesList.split(',');
+
+            //set boolean values
+            plugin.settings.liveMode = (plugin.settings.liveMode == "Yes") ? true : false;
+            plugin.settings.allPages = (plugin.settings.allPages == "Yes") ? true : false;
+            plugin.settings.includeLatestDocuments = (plugin.settings.includeLatestDocuments == "Yes") ? true : false;
+            plugin.settings.includeByDate = (plugin.settings.includeByDate == "Yes") ? true : false;
+            plugin.settings.includeByCountry = (plugin.settings.includeByCountry == "Yes") ? true : false;
+            plugin.settings.includePublicationsDocuments = (plugin.settings.includePublicationsDocuments == "Yes") ? true : false;
+            plugin.settings.hideInternal = (plugin.settings.hideInternal == "Yes") ? true : false;
+            plugin.settings.hideFooter = (plugin.settings.hideFooter == "Yes") ? true : false;
+            plugin.settings.booleanOnExit = (plugin.settings.showOnExit == "Yes") ? true : false;
+            plugin.settings.booleanOnClick = (plugin.settings.showOnClick > 0) ? true : false;
+            plugin.settings.booleanOnMinutes = (plugin.settings.showOnMinutes > 0) ? true : false;
+
+            //variables
+            plugin.settings.currentUrl = document.location.href;
+            plugin.settings.currentPath = document.location.pathname;
+            plugin.settings.isPROD = plugin.settings.currentUrl.indexOf(plugin.settings.testUrl) < 0;
+            plugin.settings.session = "session-" + plugin.settings.contentID;
+
+            //template
+            plugin.settings.templateFooter = "";
+            if (!plugin.settings.hideFooter) {
+                plugin.settings.templateFooter = '<div class="modal-footer">' +
+                    '<a class="primarybgcolor primarytextcolor btn btn-primary thanksClose" href="' + plugin.settings.surveyUrl + '" target="_blank">' + plugin.settings.button + '</a>' +
+                    '<button type="button" class="btn btn-default maybeLater secondrytextcolor">Maybe Later</button> ' +
+                    '<button type="button" class="btn btn-default thanksClose secondrytextcolor">No Thanks</button>' +
+                    '</div>';
+            };
+
+            plugin.settings.templateLogo = "";
+            if (plugin.settings.logo.length > 0) {
+                plugin.settings.templateLogo = '<span class="popup-logo">' + plugin.settings.logo + '</span>';
+            };
+
+            plugin.settings.template = '<div  class="modal fade oecd-popup" id="' + plugin.settings.popupID + '" tabindex="-1" role="dialog" aria-labelledby="popup-modal" aria-hidden="true">' +
+                '<div class="modal-dialog">' +
+                '<div class="modal-content secondrybgcolor secondrytextcolor primarybordercolor ">' +
+                '<div class="modal-header  primarybgcolor primarytextcolor"><button type="button" class="close primarybgcolor"  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h3 class="primarytextcolor modal-title">' +
+                plugin.settings.templateLogo + plugin.settings.title + '</h3></div>' +
+                '<div class="modal-body">' + plugin.settings.text + '</div>' + plugin.settings.templateFooter +
+                '</div></div></div>';
+
+            //check for liveMode
+            if ((!plugin.settings.liveMode) && plugin.settings.isPROD) {
+                return;
+            }
+
+            // plugin.settings.currentUrl = 'http://t4-pub-4.main.oecd.org:8080/terminalfour/SiteManager?ctfn=publish&fnno=30&sid=40067&chid=7&lang=en&sp=false&act=149&acc=211790&acv=0.3&ms=false&ss=true&ede=false&sp=false&spc=true&act=149&acc=211790&acv=0.3';
+
+            //check for page list
+            if (!plugin.settings.allPages) {
+                if (
+                    indexOf(plugin.settings.pagesList, plugin.settings.currentUrl) < 0 
+                    && (
+                        !plugin.settings.booleanOnExit 
+                        || !plugin.settings.booleanOnClick 
+                        || !plugin.settings.booleanOnMinutes
+                    )
+                ) {
+                    return;
+                }
+
+            } else
+            if ((!plugin.settings.includeLatestDocuments) && (plugin.settings.currentPath.indexOf('/latestdocuments/') > 0)) {
+                return;
+            }
+            if ((!plugin.settings.includeByDate) && (plugin.settings.currentPath.indexOf('/bydate/') > 0)) {
+                return;
+            }
+            if ((!plugin.settings.includeByCountry) && (plugin.settings.currentPath.indexOf('/bycountry/') > 0)) {
+                return;
+            }
+            if ((!plugin.settings.includePublicationsDocuments) && (plugin.settings.currentPath.indexOf('/publicationsdocuments/') > 0)) {
+                return;
+            }
+
+            //check for Cookie -- No thanks
+            if (getCookie(plugin.settings.cookie) != "") {
+                return;
+            }
+
+            //check for Session -- Maybe Later
+            if (getCookie(plugin.settings.session) != "") {
+                return;
+            }
+
+            //check for internal
+            if (plugin.settings.hideInternal) {
+                // an ajax call can be used in here to check if this resource (image) can be loaded by the caller
+                
+                $('body').append('<img id="internalExternal" class="hide" src="' + plugin.settings.internalExternalImg + '">');
+
+                $('#internalExternal')
+                    .each(function() {
+                        //Cache fix for browsers that don't trigger .load()
+                        if (this.complete) $(this).trigger('load');
+                    })
+                    .on('load', function() {
+                        if (this.width === 20 && this.height === 20) { return;}
+                        else { plugin.checkAndShow();}
+                    })
+                    .on('error', function() {
+                        //console.log("external");
+                        plugin.checkAndShow();
+                    });
+
+            } else {
+                plugin.checkAndShow();
+            }
+
+        }
+
+        plugin.checkAndShow = function () {
+            //Check exit, onclick, and minutes //show popup after
+            if (plugin.settings.booleanOnExit || plugin.settings.booleanOnClick || plugin.settings.booleanOnMinutes) {
+                
+                //Set page visit
+                if (localStorage) {
+                    // LocalStorage is supported!
+                    if (indexOf(plugin.settings.pagesList, plugin.settings.currentUrl) > -1) {
+                        localStorage.setItem('popup' + plugin.settings.contentID + '_pagevisited', '0');
+                    } 
+                }
+
+                //showOnExit
+                if (plugin.settings.booleanOnExit) {
+                    $(document).on("click", "a", function(event) {
+                        var target = getLocation($(this).attr("href"));
+                        var target_link = $(this).attr("href");
+                        if (!target_link.startsWith(window.location.origin) && target_link.startsWith("/")) {
+                            target_link = window.location.origin + target_link;
+                        }
+
+                        if ((plugin.settings.allPages) && (target.hostname !== window.location.hostname) 
+                            || (indexOf(plugin.settings.pagesList, target_link) == -1 )  
+                            || (plugin.settings.pagesList.indexOf(target_link) == -1 && indexOf(plugin.settings.pagesList, target_link) == -1)) { 
+                                //console.log("inside of oecd domain");
+                                plugin.settings.booleanExitDomain = true;
+                                if (!getCookie(plugin.settings.session) != "") {
+                                    if (localStorage) {
+                                        if(localStorage.getItem('popup' + plugin.settings.contentID + '_pagevisited') == '0'){
+                                            event.preventDefault();
+                                            plugin.show();
+                                            localStorage.setItem('popup' + plugin.settings.contentID + '_pagevisited', '1');
+                                        }
+                                    }
+                                }
+                            
+                        } else {
+                            plugin.settings.booleanExitDomain = false;
+                        }
+                    });
+                }
+                //showOnClick
+                if (plugin.settings.booleanOnClick) {
+                        if (localStorage) {
+                            // LocalStorage is supported!
+                            if (indexOf(plugin.settings.pagesList, plugin.settings.currentUrl) > -1 &&
+                                localStorage.getItem('popup' + plugin.settings.contentID + '_clickCount') === null) {
+                                localStorage.setItem('popup' + plugin.settings.contentID + '_clickCount', '0');
+                            } else if (localStorage.getItem('popup' + plugin.settings.contentID + '_clickCount') !== null && clickHappened) {
+                                var clickCount = parseInt(localStorage.getItem('popup' + plugin.settings.contentID + '_clickCount'));
+                                localStorage.setItem('popup' + plugin.settings.contentID + '_clickCount', clickCount + 1);
+                            }
+                            if (localStorage.getItem('popup' + plugin.settings.contentID + '_pagevisited') == '0') {
+                                if (localStorage.getItem('popup' + plugin.settings.contentID + '_clickCount') >= parseInt(plugin.settings.showOnClick)) {
+                                    plugin.show();
+                                    localStorage.setItem('popup' + plugin.settings.contentID + '_pagevisited', '1');
+                                }
+                            }
+                        }
+                }
+                //showOnMinutes
+                if (plugin.settings.booleanOnMinutes) {
+                    if (indexOf(plugin.settings.pagesList, plugin.settings.currentUrl) > -1) {
+                            setTimeout(function(){
+                                if (localStorage.getItem('popup' + plugin.settings.contentID + '_pagevisited') == '0') {
+                                plugin.show();
+                                localStorage.setItem('popup' + plugin.settings.contentID + '_pagevisited', '1'); 
+                            }
+                        }, plugin.settings.showOnMinutes * 1000);
+                    }
+                }
+            } else {
+                //show popup in the opening
+                plugin.show();
+            }
+        }
+
+        plugin.show = function() {
+            //console.log('Show OECD popup');
+            plugin.settings.container.append($(plugin.settings.template));
+
+            //Change color 
+            if (plugin.settings.primarybgcolor.length > 0) {
+                $('.primarybgcolor').css('background-color', plugin.settings.primarybgcolor);
+                $('.primarybordercolor').css('border-color', plugin.settings.primarybgcolor);
+            }
+            if (plugin.settings.secondrybgcolor.length > 0) {
+                $('.secondrybgcolor').css('background-color', plugin.settings.secondrybgcolor);
+            }
+            if (plugin.settings.primarytextcolor.length > 0) {
+                $('.primarytextcolor').css('color', plugin.settings.primarytextcolor);
+            }
+            if (plugin.settings.secondrytextcolor.length > 0) {
+                $('.secondrytextcolor').css('color', plugin.settings.secondrytextcolor);
+            }
+
+            //Show Popup 
+            $('#' + plugin.settings.popupID).modal('show');
+
+            $('#' + plugin.settings.popupID).find('.maybeLater').click(function() {
+                $('#' + plugin.settings.popupID).modal('hide');
+            });
+
+            $('#' + plugin.settings.popupID).on('hide.bs.modal', function() {
+                setCookie(plugin.settings.session, plugin.settings.session, 1);
+            });
+
+            $('#' + plugin.settings.popupID).find('.thanksClose').click(function() {
+                setCookie(plugin.settings.cookie, plugin.settings.cookie, 30);
+                $('#' + plugin.settings.popupID).modal('hide');
+            });
+        }
+
+
+        //find element
+        function indexOf(theArray, value) {
+            if (theArray.length < 1)
+                return -1;
+            if (!String.prototype.startsWith) {
+              String.prototype.startsWith = function(searchString, position) {
+                position = position || 0;
+                return this.indexOf(searchString, position) === position;
+              };
+            }
+            for (var i = 0; i < theArray.length; i++) {
+                if (value.startsWith(theArray[i]))
+                    return i;
+            }
+            return -1;
+        }
+
+        //setCookie
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + escape(cvalue) + ((expires == null) ? "" : "; " + expires) + (";path=/");
+        }
+
+        //getCookie
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+
+        //checkCookie
+        function checkCookie(c_name) {
+            cookie_value = getCookie(c_name);
+            if (cookie_value == "") {
+                $('#popup-modal').modal('show');
+            }
+        }
+
+        //deleteCookie
+        function deleteCookie(c_name) {
+            document.cookie = c_name +"=" + c_name + ';path=/;domain=t4-pub-2;expires=Thu, 01-Jan-70 00:00:01 GMT;';
+        }
+
+        //get link
+        var getLocation = function(href) {
+            var l = document.createElement("a");
+            l.href = href;
+            return l;
+        };
+
+        plugin.init();
+        return this;
+    }
+});
+
+
+//config of data//
+
+$(document).on("click", "body", function(event) {$('body').showOecdPopup(OECD_popup_config, true)})

@@ -1,0 +1,75 @@
+//share event
+$('button.btn-dark').mousedown(function() {
+  var label = $(this).innerText();
+  dataLayer.push({
+      "customCategory": "engagement",
+      "customAction": "share",
+      "customLabel": label,
+      "event": "customEvent"})
+});
+
+//share map event
+$('.download-selection-button, .download-indicator-button').mousedown(function() {
+  dataLayer.push({
+      "customCategory": "engagement",
+      "customAction": "downloadContent",
+      "customLabel": "csv",
+      "event": "customEvent"})
+});
+
+//search keyword event
+$(document).on('submit','form.header-search-form',function(){
+	var keyword = document.querySelector('input.search-field').value;
+	dataLayer.push({
+        "customCategory": "navigation",
+        "customAction": "internalSearchTerm",
+        "customLabel": keyword,
+        "event": "customEvent"})
+});
+
+
+//add to pinboard event
+$('.add-to-pinboard-button').click(function() {
+    var type = document.querySelector('.chart-types-item.current a').innerHTML;
+    console.log(type);
+    dataLayer.push({
+        "customCategory": "engagement",
+        "customAction": "addToPinboard",
+        "customLabel": type,
+        "event": "customEvent"}) 
+});
+
+$(document).ready(function() {
+
+//jumbotron search keyword event
+$(document).on('submit','form.home-jumbotron-search-form',function(){
+	var keyword = document.querySelector('input.home-jumbotron-search-field').value;
+	dataLayer.push({
+        "customCategory": "navigation",
+        "customAction": "internalSearchTerm",
+        "customLabel": keyword,
+        "event": "customEvent"})
+});
+
+//filter by topic or type event
+$(document).on('mousedown', '.sticky a',function(){
+	var name = $(this).text().trim();
+	var typeId = $(this).closest('.exa-category').attr('id');
+	if(typeId.indexOf('type') >= 0 ) {
+    	console.log('1st');
+		dataLayer.push({
+	        "customCategory": "navigation",
+	        "customAction": "filterByType",
+	        "customLabel": name,
+	        "event": "customEvent"})
+	}
+	if(typeId.indexOf('topics') >= 0 ) {
+    	console.log('2nd');
+		dataLayer.push({
+	        "customCategory": "navigation",
+	        "customAction": "filterByTopic",
+	        "customLabel": name,
+	        "event": "customEvent"})
+	}
+  });
+});

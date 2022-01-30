@@ -1,0 +1,21 @@
+/*fix for country/topic/search pages*/
+.ddp-root .content {
+	font-weight: bold;
+	color: #111;
+	font-size: 18px;
+}
+
+/*add Flickr icon*/
+.oecd-shared-footer__icon-link.oecd-shared-footer__flickr {
+	background: url(/media/dataportal/images/SocialButtons-flickr.png) no-repeat center;
+}
+
+/*add oecd direct icon*/
+.oecd-shared-footer__icon-link.oecd-shared-footer__oecddirect {
+	background: url(/media/dataportal/images/SocialButtons-mailalerts.png) no-repeat center;
+}
+
+/*add Instagram icon*/
+.oecd-shared-footer__icon-link.oecd-shared-footer__instagram {
+background: url(/media/oecdorg/styleassets/responsive/corporate/instagram-35x35.png) no-repeat center;
+}

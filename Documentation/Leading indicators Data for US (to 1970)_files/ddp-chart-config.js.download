@@ -1,0 +1,724 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+module.exports={
+  "locales": {
+    "en": {
+      "general": {
+        "decimal": ".",
+        "thousands": "\u00A0",
+        "grouping": [3],
+        "currency": ["$", ""],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%Y-%d-%m",
+        "dateLong": "%d %B %Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "shortDays": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+        "months": [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ],
+        "shortMonths": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec"
+        ],
+        "quarterShort": "Q",
+        "close": "Close"
+      },
+      "locations": {
+        "DEW": "Germany, Former",
+        "EU27_2020": "European Union (27 countries, 2020)"
+      },
+      "observationStatus": {
+        "": { "abbr": "..", "description": "Not available" },
+        "B": { "abbr": "|", "description": "Break in series" },
+        "E": { "abbr": "e", "description": "Estimated value" },
+        "F": { "abbr": "f", "description": "Forecast value" },
+        "M": { "abbr": "x", "description": "Not applicable" },
+        "P": { "abbr": "p", "description": "Provisional data" },
+        "S": { "abbr": "s", "description": "Strike" },
+        "Z": { "abbr": "-", "description": "Nil" }
+      },
+      "chart": {
+        "outdatedBrowser": "Outdated browser: Please use a newer browser like Internet Explorer 9+, Firefox, Safari or Chrome.",
+        "forecastMarkerLabel": "Forecast",
+        "turningPointLabel": "Turning point"
+      },
+      "chartHeader": {
+        "configError": "Chart configuration error. Please specify at least a type and an indicator code.",
+        "dataError": "Data service is momentarily unavailable.",
+        "loading": "Loading data…",
+        "accessibilityNotice": "An interactive data visualization follows.",
+        "switchToTable": "Switch to the accessible table representation.",
+        "fullscreen": "Fullscreen",
+        "download": "Download",
+        "downloadSelected": "Selected data only (.csv)",
+        "downloadFull": "Full indicator data (.csv)",
+        "share": "Share",
+        "sourcePrefix": "Source:",
+        "latestTimePeriod": "Latest",
+        "endTimeLatestData": "or latest available"
+      },
+      "table": {
+        "locationColumn": "Location",
+        "highlightLocation": "Activate to highlight this location"
+      },
+      "educationChart": {
+        "mathematics": "Mathematics",
+        "science": "Science",
+        "reading": "Reading",
+        "rank": "Rank"
+      },
+      "binChart": {
+        "INEQ": {
+          "label": "Gini coefficient",
+          "equality": "Equality",
+          "inequality": "Inequality"
+        }
+      },
+      "bubbleChart": {
+        "TONNE_CAP": {
+          "label": "tonnes/capita"
+        }
+      },
+      "sharing": {
+        "savingChart": "Creating new shared chart…",
+        "savingPinboard": "Creating pinboard…",
+        "saved": "Saved.",
+        "savingError": "Saving error. Please try again.",
+        "titlePrefix": "OECD Chart",
+        "countryDashboardPrefix": "OECD Country Dashboard",
+        "pinboardTitle": "Pinboard",
+        "pinboardInactive": "To use the pinboard, please activate local storage.",
+        "pinboardNoChartsAdded": "No charts added yet",
+        "pinboardEditChart": "Edit chart",
+        "saveChartToPinboard": "Save changes",
+        "highlightedLocation": "one highlighted country",
+        "highlightedLocations": "highlighted countries",
+        "baselineIntro": "incl.",
+        "omitEndTime": "latest",
+        "showNonBaseline": "all countries"
+      },
+      "listFilter": {
+        "noResults": "No results found."
+      },
+      "moreSection": {
+        "more": "More",
+        "less": "Less"
+      },
+      "citation": {
+        "accessedOn": "Accessed on"
+      },
+      "userMessage": {
+        "show": "Show",
+        "hide": "Hide",
+        "remove": "Clear setting",
+        "removeAll": "Clear all",
+        "summary": "Settings have been carried over to customise your charts",
+        "summaryEmbeddedContext": "Settings have been carried over from an embedded chart",
+        "selections": {
+          "highlightedLocations": "The following countries have been highlighted: {{>value}}",
+          "showBaseline": {
+            "true": "Baseline is displayed",
+            "false": "Baseline is not displayed"
+          },
+          "showNonBaseline": {
+            "true": "All countries are displayed",
+            "false": "All countries are not displayed"
+          }
+        }
+      },
+      "latestXTimePeriods": {
+        "A": "last {{timePeriodCount}} years",
+        "Q": "last {{timePeriodCount}} quarters",
+        "M": "last {{timePeriodCount}} months"
+      },
+      "embeddedChartControl": {
+        "typesLabel": "Show:",
+        "typesChart": "Chart",
+        "typesTable": "Table",
+        "fullscreen": "Fullscreen",
+        "share": "Share",
+        "download": "Download",
+        "downloadSelected": "Selected data only (.csv)",
+        "downloadFull": "Full indicator data (.csv)",
+        "copyrightHolder": "OECD",
+        "toc": "Terms & Conditions",
+        "tocLink": "http://www.oecd.org/termsandconditions/",
+        "modifyChartHeading": "Modify your chart",
+        "emptySubjects": "Make your selection",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "invalidTimeFormat": {
+          "A": "Example: “1986”",
+          "Q": "Example: “Q2-1986”",
+          "M": "Example: “Feb-1986”"
+        },
+        "frequencyA": "yearly",
+        "frequencyQ": "quarterly",
+        "frequencyM": "monthly",
+        "countries": "Countries",
+        "highlightCountries": "Highlighted Countries",
+        "findCountryLabel": "Find a country by name",
+        "findCountryPlaceholder": "Find a country…",
+        "comparisonAll": "All countries",
+        "comparisonHighlighted": "Only highlighted",
+        "removeAllHighlights": "Remove all highlights",
+        "shareSelection": "Your selection for sharing",
+        "saveWithData": "Data Snapshot: your data will never change, even if the data is corrected.",
+        "saveFixedPeriod": "Data Refresh: your data changes if the data is corrected for your selection.",
+        "saveLatestData": "Live Data: your data always shows the latest available data.",
+        "sharingOptions": "Sharing options",
+        "sharingURL": "Permanent URL",
+        "sharingURLHint": "Copy the URL to open this chart with all your selections.",
+        "embedCode": "Embed code",
+        "embedCodeHint": "Use this code to embed the visualisation into your website.",
+        "embedWidth": "Width:",
+        "embedPreview": "Preview Embedding"
+      },
+      "editorChartControl": {
+        "dataset": "Dataset",
+        "indicator": "Indicator",
+        "typeLabel": "Chart type",
+        "typeAuto": "Line, bar or symbol",
+        "typeMap": "Map",
+        "typeTable": "Table",
+        "typeLineMultipleSubjects": "Line, multiple subjects",
+        "typeClusteredBar": "Clustered bar",
+        "typeBarPoint": "Bar and point",
+        "typeStackedBar": "Stacked bar",
+        "title": "Custom title",
+        "titlePlaceholder": "(optional)",
+        "subtitle": "Custom subtitle",
+        "subtitlePlaceholder": "(optional)",
+        "source": "Source",
+        "sourcePlaceholder": "e.g. Labour market statistics",
+        "referrer": "Referrer",
+        "referrerPlaceholder": "e.g. https://data.oecd.org/unemp/unemployment-rate.htm",
+        "fullscreen": "Fullscreen",
+        "share": "Share",
+        "download": "Download",
+        "downloadSelected": "Selected data only (.csv)",
+        "downloadFull": "Full indicator data (.csv)",
+        "loadingIndicatorMetadata": "Loading indicator metadata…",
+        "subjects": "Subjects",
+        "moveSubjectUp": "Move subject up",
+        "moveSubjectDown": "Move subject down",
+        "measures": "Measures",
+        "frequency": "Frequency",
+        "frequencyA": "yearly",
+        "frequencyQ": "quarterly",
+        "frequencyM": "monthly",
+        "timePeriods": "Time periods",
+        "startTime": "Start time",
+        "endTime": "End time",
+        "invalidTimeFormat": {
+          "A": "Example: “1986”",
+          "Q": "Example: “1986-Q2”",
+          "M": "Example: “1986-10”"
+        },
+        "useLatestData": "Latest data available",
+        "forecastHeading": "Forecast value marker",
+        "forecastLabel": "Start time period for the forecast value marker",
+        "sortingHeading": "Sorting",
+        "sortingAscending": "Ascending",
+        "sortingDescending": "Descending",
+        "locations": "Locations",
+        "findLocation": "Find a location",
+        "removeAllHighlighted": "Remove all highlighted",
+        "selectComparison": "Select background",
+        "comparisons": {
+          "_ALL": "All",
+          "OECD": "OECD (37)",
+          "EU27": "European Union (27, 2007)",
+          "EU28": "European Union (28, 2013)",
+          "EU27_2020": "European Union (27, 2020)",
+          "EA19": "Euro Area (19)",
+          "G7M": "G7",
+          "G20": "G20",
+          "_HIGHLIGHTED": "None (only highlighted)"
+        },
+        "baselineComparison": "Baseline comparison",
+        "showBaseline": "Show baseline",
+        "baselineComparisonLabel": "Baseline:",
+        "shareSelection": "Your selection for sharing",
+        "saveWithData": "Data Snapshot: your data will never change, even if the data is corrected.",
+        "saveFixedPeriod": "Data Refresh: your data changes if the data is corrected for your selection.",
+        "saveLatestData": "Live Data: your data always shows the latest available data.",
+        "sharingOptions": "Sharing options",
+        "shareOnSocialMedia": "Share on social media",
+        "sharingURL": "Permanent URL",
+        "sharingURLCopy": "Copy URL to clipboard",
+        "sharingURLHint": "Copy the URL to open this chart with all your selections.",
+        "embedCode": "Embed code",
+        "embedCodeCopy": "Copy code to clipboard",
+        "embedCodeHint": "Use this code to embed the visualisation into your website.",
+        "embedWidth": "Width:",
+        "embedPreview": "Preview Embedding"
+      }
+    },
+    "fr": {
+      "general": {
+        "decimal": ".",
+        "thousands": "\u00A0",
+        "grouping": [3],
+        "currency": ["$", ""],
+        "dateTime": "%a %b %e %X %Y",
+        "date": "%Y-%d-%m",
+        "dateLong": "%d %B %Y",
+        "time": "%H:%M:%S",
+        "periods": ["AM", "PM"],
+        "days": [
+          "dimanche",
+          "lundi",
+          "mardi",
+          "mercredi",
+          "jeudi",
+          "vendredi",
+          "samedi"
+        ],
+        "shortDays": ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"],
+        "months": [
+          "janvier",
+          "février",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juillet",
+          "août",
+          "septembre",
+          "octobre",
+          "novembre",
+          "décembre"
+        ],
+        "shortMonths": [
+          "janv",
+          "févr",
+          "mars",
+          "avril",
+          "mai",
+          "juin",
+          "juil",
+          "août",
+          "sept",
+          "oct",
+          "nov",
+          "dec"
+        ],
+        "quarterShort": "T",
+        "close": "Fermer"
+      },
+      "locations": {
+        "DEW": "Allemagne, Ex-répub",
+        "EU27_2020": "Union européenne (27 pays, 2020)"
+      },
+      "observationStatus": {
+        "": { "abbr": "..", "description": "Non disponible" },
+        "B": { "abbr": "|", "description": "Rupture de série" },
+        "E": { "abbr": "e", "description": "Valeur estimée" },
+        "F": { "abbr": "f", "description": "Prévision" },
+        "M": { "abbr": "x", "description": "Sans objet" },
+        "P": { "abbr": "p", "description": "Donnée provisoire" },
+        "S": { "abbr": "s", "description": "Grève" },
+        "Z": { "abbr": "-", "description": "Néant" }
+      },
+      "chart": {
+        "outdatedBrowser": "Navigateur obsolète: S’il vous plaît utiliser un navigateur plus récent comme Internet Explorer 9+, Firefox, Safari ou Chrome.",
+        "forecastMarkerLabel": "Prévisions",
+        "turningPointLabel": "Tournant"
+      },
+      "chartHeader": {
+        "configError": "Erreur de configuration du graphique. S’il vous plaît spécifier au moins un type de graphique et un code indicateur.",
+        "dataError": "Le service de données est momentanément indisponible.",
+        "loading": "Chargement des données…",
+        "accessibilityNotice": "Une visualisation interactive suit.",
+        "switchToTable": "Passer à la représentation accessible du tableau.",
+        "fullscreen": "Plein écran",
+        "download": "Télécharger",
+        "downloadSelected": "Données sélectionnées (.csv)",
+        "downloadFull": "Ensemble des données (.csv)",
+        "share": "Partager",
+        "sourcePrefix": "Source:",
+        "latestTimePeriod": "dernières données disponibles",
+        "endTimeLatestData": "ou dernières données disponibles"
+      },
+      "table": {
+        "locationColumn": "Pays",
+        "highlightLocation": "Activer pour surligner cette location"
+      },
+      "educationChart": {
+        "mathematics": "Mathématiques",
+        "science": "Science",
+        "reading": "Lecture",
+        "rank": "Rang"
+      },
+      "binChart": {
+        "INEQ": {
+          "label": "Coefficient de Gini",
+          "equality": "Égalité",
+          "inequality": "Inégalité"
+        }
+      },
+      "bubbleChart": {
+        "TONNE_CAP": {
+          "label": "tonnes/capita"
+        }
+      },
+      "sharing": {
+        "savingChart": "Sauvegarde…",
+        "savingPinboard": "Sauvegarde…",
+        "saved": "Enregistré.",
+        "savingError": "Erreur",
+        "titlePrefix": "Graphique OCDE",
+        "countryDashboardPrefix": "Tableau de bord de l’OCDE",
+        "pinboardTitle": "Pêle-mêle",
+        "pinboardInactive": "Pour utiliser le pêle-mêle, veuillez activer la mémoire locale.",
+        "pinboardNoChartsAdded": "Aucun graphique ajouté",
+        "pinboardEditChart": "Modifier le graphique",
+        "saveChartToPinboard": "Sauvegarder les modifications",
+        "highlightedLocation": "un pays sélectionné",
+        "highlightedLocations": "pays sélectionnés",
+        "baselineIntro": "incl.",
+        "omitEndTime": "dernière année disponible",
+        "showNonBaseline": "tous les pays"
+      },
+      "listFilter": {
+        "noResults": "Aucun résultat trouvé."
+      },
+      "moreSection": {
+        "more": "Plus",
+        "less": "Moins"
+      },
+      "citation": {
+        "accessedOn": "Consulté le"
+      },
+      "userMessage": {
+        "show": "Afficher",
+        "hide": "Masquer",
+        "remove": "Effacer",
+        "removeAll": "Tout effacer",
+        "summary": "Des paramètres ont été enregistrés pour personnaliser votre graphique:",
+        "summaryEmbeddedContext": "Des paramètres nous ont été transmis pour personnaliser le graphique:",
+        "selections": {
+          "highlightedLocations": "Les pays suivants sont sélectionnés: {{>value}}",
+          "showBaseline": {
+            "true": "Baseline est visualisé",
+            "false": "Baseline n’est pas visualisé"
+          },
+          "showNonBaseline": {
+            "true": "L’ensemble des pays n’est pas visualisé",
+            "false": "L’ensemble des pays est visualisé"
+          }
+        }
+      },
+      "latestXTimePeriods": {
+        "A": "les {{timePeriodCount}} dernières années",
+        "Q": "les {{timePeriodCount}} derniers trimestres",
+        "M": "les {{timePeriodCount}} derniers mois"
+      },
+      "embeddedChartControl": {
+        "typesLabel": "Afficher:",
+        "typesChart": "Diagramme",
+        "typesTable": "Tableau",
+        "fullscreen": "Plein écran",
+        "share": "Partager",
+        "download": "Télécharger",
+        "downloadSelected": "Données sélectionnées (.csv)",
+        "downloadFull": "Ensemble des données (.csv)",
+        "copyrightHolder": "OCDE",
+        "toc": "Condition d’utilisation",
+        "tocLink": "http://www.oecd.org/fr/conditionsdutilisation/",
+        "modifyChartHeading": "Modifier votre graphique",
+        "emptySubjects": "Faites votre sélection",
+        "startTime": "Début de période",
+        "endTime": "Fin de période",
+        "invalidTimeFormat": {
+          "A": "Exemple: “1986”",
+          "Q": "Exemple: “T2-1986”",
+          "M": "Exemple: “Feb-1986”"
+        },
+        "frequencyA": "annuelle",
+        "frequencyQ": "trimestrielle",
+        "frequencyM": "mensuelle",
+        "countries": "Pays",
+        "highlightCountries": "Pays sélectionnés",
+        "findCountryLabel": "Chercher un pays par son nom",
+        "findCountryPlaceholder": "Chercher un pays…",
+        "comparisonAll": "Tous les pays",
+        "comparisonHighlighted": "Sélection",
+        "removeAllHighlights": "Tout désélectionner",
+        "shareSelection": "Votre sélection à partager",
+        "saveWithData": "La période est pré-définie et les données sont fixeés (ne varient pas même si elles varient sur le site)",
+        "saveFixedPeriod": "La période est pré-définie :",
+        "saveLatestData": "Dernières données disponibles :",
+        "sharingOptions": "Options de partage",
+        "sharingURL": "Lien permanent",
+        "sharingURLHint": "Copier ce lien pour ouvrir, partager votre graphique.",
+        "embedCode": "Code d'intégration",
+        "embedCodeHint": "Code permettant d'intégrer ce graphique dans votre site.",
+        "embedWidth": "Largeur:",
+        "embedPreview": "Aperçu"
+      },
+      "editorChartControl": {
+        "dataset": "Donneés",
+        "indicator": "Indicateur",
+        "typeLabel": "Type de graphique",
+        "typeAuto": "Ligne, histogramme ou symboles",
+        "typeMap": "Carte",
+        "typeTable": "Tableau",
+        "typeLineMultipleSubjects": "Ligne, par sujets",
+        "typeClusteredBar": "Histogrammes groupés",
+        "typeBarPoint": "Histogramme et points",
+        "typeStackedBar": "Histogrammes empilés",
+        "title": "Titre alternatif",
+        "titlePlaceholder": "(optionnel)",
+        "subtitle": "Sous-titre alternatif",
+        "subtitlePlaceholder": "(optionnel)",
+        "source": "Source",
+        "sourcePlaceholder": "ex. Statistiques sur l'emploi et le marché du travail",
+        "referrer": "URL source",
+        "referrerPlaceholder": "ex. https://data.oecd.org/unemp/unemployment-rate.htm",
+        "fullscreen": "Plein écran",
+        "share": "Partager",
+        "download": "Télécharger",
+        "downloadSelected": "Données sélectionnées (.csv)",
+        "downloadFull": "Ensemble des données (.csv)",
+        "loadingIndicatorMetadata": "Chargement des métadonnées de l’indicateur...",
+        "subjects": "Sujets",
+        "moveSubjectUp": "Déplacer le sujet vers le haut",
+        "moveSubjectDown": "Déplacer le sujet vers le bas",
+        "measures": "Mesures",
+        "frequency": "Fréquence",
+        "frequencyA": "annuelle",
+        "frequencyQ": "trimestrielle",
+        "frequencyM": "mensuelle",
+        "timePeriods": "Période",
+        "startTime": "Date de début",
+        "endTime": "Date de fin",
+        "invalidTimeFormat": {
+          "A": "Exemple: “1986”",
+          "Q": "Exemple: “1986-Q2”",
+          "M": "Exemple: “1986-10”"
+        },
+        "useLatestData": "Dernières données disponibles",
+        "forecastHeading": "Marqueur des données prévisionnelles",
+        "forecastLabel": "Date de début pour le marqueur des données prévisionnelles",
+        "sortingHeading": "Tri",
+        "sortingAscending": "croissant",
+        "sortingDescending": "décroissant",
+        "locations": "Pays",
+        "findLocation": "Chercher un pays par son nom",
+        "removeAllHighlighted": "Tout désélectionner",
+        "selectComparison": "Choix de l’arrière plan",
+        "comparisons": {
+          "_ALL": "Tous",
+          "OECD": "OCDE (37)",
+          "EU27": "Union européenne (27, 2007)",
+          "EU28": "Union européenne (28, 2013)",
+          "EU27_2020": "Union européenne (27, 2020)",
+          "EA19": "Zone Euro (19)",
+          "G7M": "G7",
+          "G20": "G20",
+          "_HIGHLIGHTED": "Aucun"
+        },
+        "baselineComparison": "Comparaison avec valeur référente",
+        "showBaseline": "Afficher valeur référente",
+        "baselineComparisonLabel": "Valeur référente:",
+        "shareSelection": "Votre sélection à partager:",
+        "saveWithData": "La période est pré-définie et les données sont fixeés (ne varient pas même si elles varient sur le site)",
+        "saveFixedPeriod": "La période est pré-définie :",
+        "saveLatestData": "Dernières données disponibles :",
+        "sharingOptions": "Options de partage",
+        "shareOnSocialMedia": "Partager sur réseaux sociaux",
+        "sharingURL": "Lien permanent",
+        "sharingURLCopy": "Copier URL dans presse-papier",
+        "sharingURLHint": "Copier ce lien pour ouvrir, partager votre graphique.",
+        "embedCode": "Code d'intégration",
+        "embedCodeCopy": "Copier code dans presse-papier",
+        "embedCodeHint": "Code permettant d'intégrer ce graphique dans votre site.",
+        "embedWidth": "Largeur:",
+        "embedPreview": "Aperçu"
+      }
+    }
+  },
+
+  "dataAPI": {
+    "baseUrl": "https://stats.oecd.org/sdmx-json/data",
+    "agencyName": "OECD",
+    "dataset": "DP_LIVE",
+    "baselineComparison": "OECD"
+  },
+
+  "latestDataTimePeriods": {
+    "A": 5,
+    "Q": 8,
+    "M": 14
+  },
+
+  "multipleLineChart": {
+    "minLocations": 6,
+    "maxLocations": 20
+  },
+
+  "chartSaving": {
+    "saveURL": "https://data.oecd.org/chart/",
+    "embedURL": "https://data.oecd.org/chart/{{{id}}}",
+    "externalSharingURL": "https://data.oecd.org/sharebox/"
+  },
+  "countryDashboard": {
+    "embedURL": "https://data.oecd.org/dashboard/{{{locale}}}/{{{id}}}",
+    "externalSharingURL": "https://data.oecd.org/country-dashboard/"
+  },
+  "pinboard": {
+    "saveURL": "//data.oecd.org/pinboard/",
+    "embedURL": "https://data.oecd.org/pinboard/{{{id}}}"
+  },
+  "errorReporting": {
+    "enabled": false,
+    "reportURL": "https://one.oecd.org/log/event/dp"
+  },
+  "measures": {
+    "1000000HAB": { "decimals": 0 },
+    "100000PER": { "decimals": 0 },
+    "100000MEN": { "decimals": 0 },
+    "100000WOMEN": { "decimals": 0 },
+    "100000HAB": { "decimals": 0 },
+    "1000EMPLOYED": { "decimals": 1 },
+    "1000HAB": { "decimals": 1 },
+    "100HAB": { "decimals": 1 },
+    "AGRWTH": { "decimals": 1 },
+    "BLN_M3": { "decimals": 1 },
+    "MLN_PKM": { "decimals": 1 },
+    "MLN_TONNEKM": { "decimals": 1 },
+    "MLN_M3": { "decimals": 1 },
+    "MLN_SDR": { "decimals": 1 },
+    "MLN_PER": { "decimals": 4 },
+    "MLN_TOE": { "decimals": 1 },
+    "KTOE": { "decimals": 1 },
+    "MLN_TONNE": { "decimals": 1 },
+    "MLN_USD": { "decimals": 1 },
+    "THND_PER": { "decimals": 1 },
+    "THND_TONNE": { "decimals": 1 },
+    "TONNE": { "decimals": 1 },
+    "TONNE_CAP": { "decimals": 1 },
+    "TONNE_HA": { "decimals": 2 },
+    "THND_TONNECO2": { "decimals": 1 },
+    "THND_USD": { "decimals": 1 },
+    "THND_USD_CAP": { "decimals": 1 },
+    "CHD_WOMAN": { "decimals": 2 },
+    "DEATH_1000BIRTH": { "decimals": 2 },
+    "EUR": { "decimals": 2 },
+    "HA": { "decimals": 0 },
+    "HR_WKD": { "decimals": 0 },
+    "RT": { "decimals": 2 },
+    "IDX": { "decimals": 2 },
+    "IDX2000": { "decimals": 2 },
+    "IDX2005": { "decimals": 2 },
+    "IDX2010": { "decimals": 2 },
+    "IDX2015": { "decimals": 2 },
+    "OECDIDX": { "decimals": 2 },
+    "LTRENDIDX": { "decimals": 2 },
+    "PSTAGEIDX": { "decimals": 2 },
+    "INEQ": { "decimals": 2 },
+    "KG_CAP": { "decimals": 1 },
+    "KG_HA": { "decimals": 1 },
+    "LT_CAP15": { "decimals": 1 },
+    "M3CAP": { "decimals": 1 },
+    "MULTAGEARN": { "decimals": 1 },
+    "NATUSD": { "decimals": 3 },
+    "NBR": { "decimals": 1 },
+    "PC": { "decimals": 1 },
+    "PC_CHG": { "decimals": 1 },
+    "PC_PNT": { "decimals": 1 },
+    "PC_AGE": { "decimals": 1 },
+    "PC_LF": { "decimals": 1 },
+    "PC_DI": { "decimals": 1 },
+    "PC_EDUEXP": { "decimals": 1 },
+    "PC_EMP": { "decimals": 1 },
+    "PC_EMPLOYEEMFG": { "decimals": 1 },
+    "PC_ENRGGEN": { "decimals": 1 },
+    "PC_ENTERPRISEMFG": { "decimals": 1 },
+    "PC_NDI": { "decimals": 1 },
+    "PC_GDP": { "decimals": 1 },
+    "PC_GFARM": { "decimals": 1 },
+    "PC_GNI": { "decimals": 1 },
+    "PC_GODA": { "decimals": 1 },
+    "PC_GEXP": { "decimals": 1 },
+    "PC_HEALTHXP": { "decimals": 1 },
+    "PC_HH": { "decimals": 1 },
+    "PC_HHDI": { "decimals": 1 },
+    "PC_HHFA": { "decimals": 1 },
+    "PC_INFLOW": { "decimals": 1 },
+    "PC_LC": { "decimals": 1 },
+    "PC_POP": { "decimals": 1 },
+    "PC_POPMEN": { "decimals": 1 },
+    "PC_POPWOMEN": { "decimals": 1 },
+    "PC_POP15": { "decimals": 1 },
+    "PC_POP15MEN": { "decimals": 1 },
+    "PC_POP15WOMEN": { "decimals": 1 },
+    "PC_PRERETEARN": { "decimals": 1 },
+    "PC_PRYENRGSUPPLY": { "decimals": 1 },
+    "PC_SPECIES": { "decimals": 1 },
+    "PC_TOT": { "decimals": 1 },
+    "PC_TOT_TAX": { "decimals": 1 },
+    "PC_UNEMP": { "decimals": 1 },
+    "PC_VA": { "decimals": 1 },
+    "PC_WKGPOP": { "decimals": 1 },
+    "PC_NBORNLF": { "decimals": 1 },
+    "PC_FBORNLF": { "decimals": 1 },
+    "PC_PA": { "decimals": 1 },
+    "MEANSCORE": { "decimals": 0 },
+    "TOE_1000USD": { "decimals": 2 },
+    "GWH": { "decimals": 1 },
+    "TWH": { "decimals": 1 },
+    "USD": { "decimals": 1 },
+    "BLN_USD": { "decimals": 1 },
+    "USD_BAR": { "decimals": 1 },
+    "USD_CAP": { "decimals": 0 },
+    "USD_STUDENT": { "decimals": 0 },
+    "YR": { "decimals": 1 }
+  }
+}
+
+},{}],2:[function(require,module,exports){
+"use strict";
+
+/* global process */
+var chartConfig = window.DDP_CHART_CONFIG || require('./ddp-chart-config.json');
+
+if ("t4" === 'development') {
+  chartConfig.errorReporting.enabled = false;
+}
+
+window.DDP_CHART_CONFIG = chartConfig;
+
+},{"./ddp-chart-config.json":1}]},{},[2]);

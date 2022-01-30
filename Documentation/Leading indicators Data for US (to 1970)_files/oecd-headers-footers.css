@@ -1,0 +1,155 @@
+/*! BUILD-da8c944f31c9ef15d238bd3376eb69efbc9a9426 */
+.oecd-header { background-color: white; font-family: Bernini, "Bernini Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+@media only screen and (min-width: 768px) { .oecd-header { height: 38px; border-bottom: 1px solid #c3c3c3; background-image: -moz-linear-gradient(top, white, white 90%, #f0f0f0); background-image: -webkit-linear-gradient(top, white, white 90%, #f0f0f0); background-image: linear-gradient(to bottom, white, white 90%, #f0f0f0); font-size: 14px; } }
+
+.oecd-header__primary, .oecd-header__secondary { list-style: none; margin-bottom: 0; padding: 0; }
+
+.oecd-header__primary:focus, .oecd-header__secondary:focus { outline: 0; }
+
+@media only screen and (min-width: 768px) { .oecd-header__primary { text-align: center; } }
+
+@media only screen and (max-width: 767px) { .oecd-header--primary-hidden .oecd-header__primary { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); border: 0; } }
+
+.oecd-header__logo-and-toggle { border-bottom: 1px solid #99bcd4; }
+
+@media only screen and (min-width: 768px) { .oecd-header__logo-and-toggle { padding-right: 0; } }
+
+.oecd-header__logo { float: left; width: 110px; height: 46px; background: url(/media/oecdorg/styleassets/responsive/menu/images/OECD-60A_en_dataportal-header.png) center/110px no-repeat; }
+
+.oecd-header__logo:lang(fr) { background-image: url(/media/oecdorg/styleassets/responsive/menu/images/OECD-60A_fr_dataportal-header.png); }
+
+@media only screen and (min-width: 768px) { .oecd-header__logo { float: none; width: 100%; height: 38px; background: url(/media/dataportal/images/logo-oecd-short@2x.png) left center/35px no-repeat; }
+  .oecd-header__logo:lang(fr) { background-image: url(/media/dataportal/images/logo-oecd-short@2x.png); } }
+
+.oecd-header__primary-toggle { -moz-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; position: absolute; right: 0; top: 0; bottom: 0; width: 50px; border: 0; padding: 0; background-color: white; }
+
+@media only screen and (min-width: 768px) { .oecd-header__primary-toggle { display: none; } }
+
+.oecd-header__menu-open { display: none; margin: auto; width: 20px; height: 15px; border-top: 9px double #0b71b0; border-bottom: 3px solid #0b71b0; }
+
+.oecd-header__menu-close { display: block; color: #0b71b0; font-size: 40px; line-height: 45px; }
+
+.oecd-header--primary-hidden .oecd-header__menu-open { display: block; }
+
+.oecd-header--primary-hidden .oecd-header__menu-close { display: none; }
+
+.oecd-header__item { position: relative; min-height: 46px; border-bottom: 1px solid #99bcd4; }
+
+@media only screen and (min-width: 768px) { .oecd-header__item { min-height: 1px; border-bottom: 0; } }
+
+.oecd-header__current-page, .oecd-header__link { display: block; margin: 0 -15px; padding: 11px 15px 10px; line-height: 25px; color: #11629a; }
+
+@media only screen and (min-width: 768px) { .oecd-header__current-page, .oecd-header__link { margin: 0; padding: 10px 0 8px; line-height: 20px; } }
+
+.oecd-header__link:hover, .oecd-header__link:focus { color: #428bca; }
+
+.oecd-header__link:focus { outline: 1px solid rgba(11, 113, 176, 0.35); }
+
+.oecd-header__item--active { font-weight: bold; background-color: #eef4f8; }
+
+@media only screen and (min-width: 768px) { .oecd-header__item--active { height: 38px; border-style: none solid; border-width: 1px; border-color: #c3c3c3; } }
+
+@media only screen and (min-width: 768px) { .oecd-header--bg-white .oecd-header__item--active { background-color: white; }
+  .oecd-header--bg-light-blue .oecd-header__item--active { background-color: #eef4f8; }
+  .oecd-header--bg-dark-blue .oecd-header__item--active { background-color: #1b67b5; } }
+
+@media only screen and (min-width: 768px) { .oecd-header--bg-dark-blue .oecd-header__current-page { color: white; } }
+
+.oecd-header__secondary { background-color: white; }
+
+@media only screen and (min-width: 768px) { .oecd-header__secondary { position: absolute; left: -1px; right: -1px; border-style: none solid solid; border-width: 1px; border-color: #c0c0c0; font-size: 12px; text-align: left; }
+  .oecd-header__secondary:focus { outline: 1px solid rgba(11, 113, 176, 0.35); } }
+
+@media only screen and (min-width: 992px) { .oecd-header__secondary { font-size: 14px; } }
+
+.oecd-header__secondary-toggle { color: #0c456c; }
+
+.oecd-header__secondary-toggle:after { content: "\25BC"; float: right; }
+
+@media only screen and (min-width: 768px) { .oecd-header__secondary-link { padding: 6px 15px; } }
+
+.oecd-header__secondary-item-first { border-top: 1px solid #99bcd4; }
+
+@media only screen and (min-width: 768px) { .oecd-header__secondary-item-first { border-top: 0; } }
+
+.oecd-header__secondary-item-last { border-bottom: 0; }
+
+@media only screen and (min-width: 768px) { .oecd-header__secondary-container--active { z-index: 204; background-color: white; border-right: 1px solid #c0c0c0; } }
+
+.oecd-header__secondary-container--active .oecd-header__secondary-toggle:after { content: "\25B2"; }
+
+.oecd-institutional-footer, .oecd-shared-footer { font-size: 85%; }
+
+@media only screen and (min-width: 768px) { .oecd-institutional-footer, .oecd-shared-footer { font-size: 100%; } }
+
+.oecd-institutional-footer { padding: 10px 0; background-color: #eef4f8; font-family: Caecilia, Georgia, serif; color: #0b71b0; }
+
+.oecd-institutional-footer__name { font-size: 18px; line-height: 20px; }
+
+.oecd-institutional-footer__link { display: block; }
+
+.oecd-shared-footer { padding: 20px 0; font-family: Bernini, "Bernini Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: white; }
+
+.oecd-shared-footer a { color: white !important; }
+
+.oecd-shared-footer--dark { background-color: #343434; }
+
+.oecd-shared-footer--light { background-color: #0f629a; }
+
+.oecd-shared-footer__logo-and-copyright:before, .oecd-shared-footer__logo-and-copyright:after { content: ''; display: table; }
+
+.oecd-shared-footer__logo-and-copyright:after { clear: both; }
+
+.oecd-shared-footer__logo-and-copyright { zoom: 1; }
+
+.oecd-shared-footer__logo { margin-bottom: 10px; width: 220px; height: 40px; background: url(/media/oecdorg/styleassets/responsive/menu/images/OECD-60A_en_footer_white.png) no-repeat center; }
+
+.oecd-shared-footer__logo:lang(fr) { background-image: url(/media/oecdorg/styleassets/responsive/menu/images/OECD-60A_fr_footer_white.png); }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) { .oecd-shared-footer__logo { background-image: url(/media/oecdorg/styleassets/responsive/menu/images/OECD-60A_en_mobile_white.png); background-size: contain; }
+  .oecd-shared-footer__logo:lang(fr) { background-image: url(/media/oecdorg/styleassets/responsive/menu/images/OECD-60A_fr_mobile_white.png); } }
+
+@media only screen and (min-width: 768px) { .oecd-shared-footer__copyright { font-size: 100%; } }
+
+.oecd-shared-footer--dark .oecd-shared-footer__copyright { color: #a4a1a1; }
+
+.oecd-shared-footer--light .oecd-shared-footer__copyright { color: #cacaca; }
+
+@media only screen and (min-width: 768px) { .oecd-shared-footer__copyright-first, .oecd-shared-footer__copyright-second { display: block; } }
+
+.oecd-shared-footer__links, .oecd-shared-footer__icons { margin: 0; padding: 0; list-style: none; }
+
+.oecd-shared-footer__links:before, .oecd-shared-footer__links:after, .oecd-shared-footer__icons:before, .oecd-shared-footer__icons:after { content: ''; display: table; }
+
+.oecd-shared-footer__links:after, .oecd-shared-footer__icons:after { clear: both; }
+
+.oecd-shared-footer__links, .oecd-shared-footer__icons { zoom: 1; }
+
+.oecd-shared-footer__link-item { margin-bottom: 10px; }
+
+.oecd-shared-footer__link { display: block; }
+
+.oecd-shared-footer__social-media { clear: both; padding-top: 10px; }
+
+@media only screen and (min-width: 768px) { .oecd-shared-footer__social-media { clear: none; padding-top: 0; } }
+
+.oecd-shared-footer__icon { float: left; margin-right: 5px; }
+
+@media only screen and (min-width: 768px) { .oecd-shared-footer__icon { margin-bottom: 5px; } }
+
+.oecd-shared-footer__icon-link { text-indent: 110%; white-space: nowrap; overflow: hidden; display: block; opacity: 0.85; transition: opacity 300ms; width: 35px; height: 35px; background: url(/media/dataportal/images/social-buttons.png) no-repeat center; }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx) { .oecd-shared-footer__icon-link { background-image: url(/media/dataportal/images/social-buttons@2x.png); background-size: 35px 175px; } }
+
+.oecd-shared-footer__icon-link:hover { opacity: 1; }
+
+.oecd-shared-footer__facebook { background-position: 0 0px; }
+
+.oecd-shared-footer__twitter { background-position: 0 -35px; }
+
+.oecd-shared-footer__youtube { background-position: 0 -70px; }
+
+.oecd-shared-footer__linkedin { background-position: 0 -105px; }
+
+.oecd-shared-footer__rss { background-position: 0 -140px; }
