@@ -6,6 +6,8 @@
 # octave. Does not match the number of datapoints. ie, you will need
 # to manually remove some years from the recession_dates_formatted
 # and leading_indicators_formatted to have their dimensions match.
+# Additionally, any invisible BOMs at the beggining of file will have
+# to be manually removed as well. Notepad++ is good for this.
 #
 # I choose to remove datapoints such that the years I looked at were
 # from January 1970 to July 2021.
