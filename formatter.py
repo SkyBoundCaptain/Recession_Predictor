@@ -1,7 +1,7 @@
 #####################################################################
 # Function: formatter.py
 # Author: Hasec Rainn
-# Desc: Takes the raw data in leading_indicators.csv and
+# Desc & Notes: Takes the raw data in leading_indicators.csv and
 # recession_dates, converting it into a format that can be read into
 # octave. Does not match the number of datapoints. ie, you will need
 # to manually remove some years from the recession_dates_formatted
@@ -11,6 +11,11 @@
 #
 # I choose to remove datapoints such that the years I looked at were
 # from January 1970 to July 2021.
+#
+# If you are downloading Recession_Predictor yourself to test it,
+# you do not (and should not) run formatter.py since the formatted
+# data can already be found in the corresponding "formatted_MYDATA"
+# files.
 #####################################################################
 
 
@@ -32,7 +37,8 @@ for line in range(0, len(recessionDates) ):
     element = list(recessionDates[line]) 
 
     # replace first "-" with "." in a line. Then, eliminate
-    # the second "-" entirely.
+    # the second "-" and the 2 char after it 
+    # (ie, eliminate the day portion of date)
     char = 0        #start with the first character
     dash = 0        #start with 0 dashes
     while(dash != 2):
@@ -95,7 +101,8 @@ for line in range(0, len(leadingIndicators) ):
                 element[char] = ','
         else: #it might be a dot
             if(element[char] == '.'):
-                dot = dot + 1
+                dot = dot + 1 #track num of dots on this line
+                #"month" will represent a calender month when dot=1
                 month = element[char+1] + element[char+2]
 
                 #if we find we aren't in a business quarter...
