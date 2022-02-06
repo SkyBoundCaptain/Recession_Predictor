@@ -5,5 +5,4 @@ It uses leading economic indicators' composites, dates, and recession occurances
 doing so with 87.92% accuracy. The data used can be found in "Documentation."
 
 Recession Predictor is currently set up to predict regressions within the last 50 years, but it has the potential to predict recessions in the future as well.
-Given projected leading economic indicator composites, it can predict when future economic recessions will occur.
-
+Given projected leading economic indicator composites, it could predict when future economic recessions will occur.
