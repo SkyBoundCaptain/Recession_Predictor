@@ -17,25 +17,13 @@ RD_Data = dlmread("recession_dates_formatted.csv"); %Get LI data
 %leading Indicator values.
 %We are going to increase the number of parameters per datapoint to allow
 %for a non-linear hypothesis function.
-
 X = LI_Data;        %datapoints of interest
+
+X = [X, X(:,2).^2];  %Adding LI^2
 X = [X, sin(X(:,1))];  %Adding sin(Year)
 X = [X, sin(X(:,1).^2 )];  %Adding sin^2(Year)
 X = [X, sin(X(:,1).^3 )];  %Adding sin^3(Year)
-#try combination of cos/sin(year) * cos/sin(LI)
-##X = [X, X(:,1).^2];  %Adding Year^2
-##X = [X, X(:,1).^3];  %Adding Year^3
-##X = [X, X(:,1).^4];  %Adding Year^4
-##X = [X, X(:,1).^5];  %Adding Year^5
-##X = [X, X(:,1).^6];  %Adding Year^6
-##X = [X, X(:,1).^7];  %Adding Year^7
-
-X = [X, X(:,2).^2];  %Adding LI^2
-##X = [X, X(:,2).^3];  %Adding LI^3
-##X = [X, X(:,2).^4];  %Adding LI^4
-##X = [X, X(:,2).^5];  %Adding LI^5
-##X = [X, X(:,2).^6];  %Adding LI^6
-##X = [X, X(:,2).^7];  %Adding LI^7
+X = [X, ( sin(X(:,4)) - sin(X(:,3))  )];  %Adding sin(Year)-LI
 
 %normalize data
 for i=1:size(X,2)
