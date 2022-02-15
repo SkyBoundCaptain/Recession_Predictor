@@ -1,6 +1,6 @@
 #####################################################################
 # Function: formatter.py
-# Author: Hasec Rainn
+# Author: Chase Nairn-Howard
 # Desc & Notes: Takes the raw data in leading_indicators.csv and
 # recession_dates, converting it into a format that can be read into
 # octave. Does not match the number of datapoints. ie, you will need
