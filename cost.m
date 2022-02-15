@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Function: Cost
-% Author: Hasec Rainn
+% Author: Chase Nairn-Howard
 % Parameters: Theta (vector), Y (vector), X (matrix)
 % Desc: Uses Theta, Y, and X to determine the cost of our current
 %       hypothesis function H_theta(X). Uses manual loop approach to
