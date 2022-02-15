@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Program: Predictor.m
-% Author: Hasec Rainn
+% Author: Chase Nairn-Howard
 % Desc: Predictor.m uses logistic regression
 % to predict when economic recessions will occur
 % in the United States. The data it uses is from the past 50 years.
